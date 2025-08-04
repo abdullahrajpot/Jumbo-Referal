@@ -1,10 +1,18 @@
 // routes/userRoutes.js
 const express = require('express');
 const router = express.Router();
-const { registerUser, loginUser } = require('../controllers/userController');
+const { 
+  registerUser, 
+  loginUser, 
+  setup2FA, 
+  enable2FA, 
+  disable2FA, 
+  generateBackupCodes 
+} = require('../controllers/userController');
 const User = require('../models/User');
 const Transaction = require('../models/Transaction');
 
+// Existing routes
 router.post('/register', registerUser);
 router.post('/login', loginUser);
 
@@ -17,7 +25,8 @@ router.get('/count', async (req, res) => {
     res.status(500).json({ error: 'Failed to get user count' });
   }
 });
-// routes/userRoutes.js
+
+// Update user profile
 router.put('/update/:id', async (req, res) => {
   try {
     const updateFields = {};
@@ -31,16 +40,27 @@ router.put('/update/:id', async (req, res) => {
     );
     res.json({ user });
   } catch (error) {
-    console.error(error); // Add this for debugging
+    console.error(error);
     res.status(500).json({ error: 'Failed to update profile' });
   }
-
 });
+
+// Get user by ID
 router.get('/user/:id', async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     if (!user) return res.status(404).json({ error: 'User not found' });
-    res.json({ user });
+    res.json({ 
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        referralCode: user.referralCode,
+        twoFactorEnabled: user.twoFactorEnabled,
+        wallet: user.wallet,
+        totalDeposits: user.totalDeposits
+      }
+    });
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch user data' });
   }
@@ -57,5 +77,14 @@ router.get('/user/:id/transactions', async (req, res) => {
   }
 });
 
+// 2FA Routes
+router.post('/2fa/setup/:userId', setup2FA);
+router.post('/2fa/enable/:userId', enable2FA);
+router.post('/2fa/disable/:userId', disable2FA);
+router.post('/2fa/backup-codes/:userId', generateBackupCodes);
 
+// Test route
+router.get('/2fa/test', (req, res) => {
+  res.json({ message: '2FA routes are working' });
+});
 module.exports = router;

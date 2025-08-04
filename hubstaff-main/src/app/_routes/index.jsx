@@ -11,6 +11,7 @@ import DepositPage from "@app/pages/user/deposit";
 import DashboardPage from "@app/pages/dashboard/dashboard";
 import MLMTreePage from "@app/pages/mlm-tree";
 import GuestRoute from "@app/_hoc/GuestRoute";
+import SettingsPage from "@app/pages/settings/SettingsPage";
 
 
 const routes = [
@@ -37,6 +38,10 @@ const routes = [
       {
         path: "mlm-tree",
         element: <Page Component={MLMTreePage} hoc={withAuth} />,
+      },
+      {
+        path: "/settings",
+        element: <Page Component={SettingsPage} hoc={withAuth} />,
       },
     ],
   },

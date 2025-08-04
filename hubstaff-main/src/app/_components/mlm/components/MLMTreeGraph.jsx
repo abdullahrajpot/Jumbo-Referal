@@ -26,6 +26,8 @@ const renderNode = ({ nodeDatum }) => {
   return (
     <foreignObject width={100} height={100} x={-50} y={-50}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+       
+        <Tooltip title={email || displayName} placement="top">
         <Avatar
           sx={{
             width: 56,
@@ -40,7 +42,6 @@ const renderNode = ({ nodeDatum }) => {
             <ellipse cx="12" cy="18" rx="8" ry="5" fill="#fff" />
           </svg>
         </Avatar>
-        <Tooltip title={email || displayName} placement="top">
           <Typography
             fontWeight={700}
             fontSize={13}

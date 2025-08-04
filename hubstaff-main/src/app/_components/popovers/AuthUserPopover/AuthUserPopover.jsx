@@ -4,6 +4,8 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import LogoutIcon from "@mui/icons-material/Logout";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import RepeatOutlinedIcon from "@mui/icons-material/RepeatOutlined";
+import SettingsIcon from "@mui/icons-material/Settings";
+
 import {
   Avatar,
   Divider,
@@ -86,9 +88,15 @@ const AuthUserPopover = () => {
               </ListItemIcon>
               <ListItemText primary="Edit Profile" sx={{ my: 0 }} />
             </ListItemButton>
+            <ListItemButton onClick={() => navigate('/settings')}>
+              <ListItemIcon sx={{ minWidth: 36 }}>
+              <SettingsIcon />
+              </ListItemIcon>
+              <ListItemText primary="Settings" sx={{ my: 0 }} />
+            </ListItemButton>
             <ListItemButton>
               <ListItemIcon sx={{ minWidth: 36 }}>
-                <RepeatOutlinedIcon />
+                < RepeatOutlinedIcon/>
               </ListItemIcon>
               <ListItemText
                 // onClick={() => navigate('/samples/content-layout')}

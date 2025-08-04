@@ -2,64 +2,6 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 const Transaction = require('../models/Transaction');
-// const { distributeReferralBonus } = require('../utils/referral');
-
-// router.post('/deposit', async (req, res) => {
-//   const { userId, amount, accountName, userName, transactionId, method } = req.body;
-
-//   try {
-//     console.log('📝 Deposit request received:', {
-//       userId,
-//       amount,
-//       accountName,
-//       userName,
-//       transactionId,
-//       method
-//     });
-
-//     const user = await User.findById(userId);
-//     if (!user) {
-//       return res.status(404).json({ error: 'User not found' });
-//     }
-
-//     console.log('👤 User found:', {
-//       email: user.email,
-//       referrerId: user.referrerId,
-//       currentWallet: user.wallet,
-//       totalDeposits: user.totalDeposits
-//     });
-
-//     // Update total deposits
-//     user.totalDeposits += amount;
-
-//     // Distribute bonuses
-//     console.log('🚀 Starting referral bonus distribution...');
-//     const { payments, totalDistributed } = await distributeReferralBonus(userId, amount);
-
-//     // Calculate actual deposit amount (amount - distributed bonuses)
-//     const actualDeposit = amount - totalDistributed;
-//     user.wallet += actualDeposit;
-//     await user.save();
-
-//     console.log('💰 Final user wallet update:', {
-//       email: user.email,
-//       actualDeposit,
-//       newWallet: user.wallet,
-//       newTotalDeposits: user.totalDeposits
-//     });
-
-//     res.status(200).json({
-//       message: `Deposit successful! Distributed ${totalDistributed} PKR in bonuses. You received ${actualDeposit} PKR.`,
-//       payments,
-//       totalDistributed,
-//       actualDeposit,
-//       userBalance: user.wallet
-//     });
-//   } catch (err) {
-//     console.error('❌ Deposit error:', err);
-//     res.status(500).json({ message: 'Deposit failed', error: err.message });
-//   }
-// });
 
 
 // routes/userRoutes.js
