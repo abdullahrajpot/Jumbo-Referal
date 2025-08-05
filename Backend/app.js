@@ -10,6 +10,7 @@ const app = express();
 const userRoutes = require('./routes/userRoutes');
 const depositRoutes = require('./routes/deposit');
 const mlmRoutes = require('./routes/mlm');
+const cartRoutes = require('./routes/cartRoutes');
 
 
 const connectDB = require('./config/db');
@@ -35,6 +36,8 @@ app.use('/api/users', userRoutes);
 app.use('/api', depositRoutes);
 
 app.use('/api/mlm-tree', mlmRoutes);
+
+app.use('/api', cartRoutes);
 
 
 
