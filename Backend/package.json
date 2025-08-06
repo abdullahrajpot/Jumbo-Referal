@@ -23,7 +23,8 @@
     "nanoid": "^5.1.5",
     "path-to-regexp": "^6.2.1",
     "qrcode": "^1.5.4",
-    "speakeasy": "^2.0.0"
+    "speakeasy": "^2.0.0",
+    "stripe": "^18.4.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"

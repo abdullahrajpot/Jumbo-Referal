@@ -17,6 +17,7 @@
     "@mui/icons-material": "^5.15.17",
     "@mui/lab": "^5.0.0-alpha.170",
     "@mui/material": "^5.15.15",
+    "@stripe/stripe-js": "^7.8.0",
     "axios": "^1.11.0",
     "i18next": "^23.11.4",
     "moment": "^2.30.1",

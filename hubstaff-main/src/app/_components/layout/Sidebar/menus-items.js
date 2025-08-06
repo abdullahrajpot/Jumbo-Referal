@@ -26,6 +26,16 @@ export function getMenus() {
           label: "MLM Tree",
           icon: "mlm",
         },
+        {
+          path: "/products",
+          label: "Products",
+          icon: "products",
+        },
+         {
+          path: "/orders",
+          label: "Orders",
+          icon: "orders",
+        },
         
       ],
     },

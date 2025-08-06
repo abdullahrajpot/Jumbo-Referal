@@ -17,6 +17,8 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import AccountBalancedWalletIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import Dashboard from "@mui/icons-material/Dashboard";
 import MlmTree from "@mui/icons-material/AccountTree";
+import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
+import ListAltRoundedIcon from '@mui/icons-material/ListAltRounded';
 
 
 
@@ -41,6 +43,16 @@ const APP_ICONS = [
   {
     name: "mlm",
     Component: MlmTree ,
+    props: { sx: { fontSize: 20 } },
+  },
+  {
+    name: "products",
+    Component: ProductionQuantityLimitsIcon ,
+    props: { sx: { fontSize: 20 } },
+  },
+  {
+    name: "orders",
+    Component: ListAltRoundedIcon ,
     props: { sx: { fontSize: 20 } },
   },
 

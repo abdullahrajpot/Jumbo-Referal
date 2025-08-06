@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Box } from "@mui/material";
+import { Grid, Box, Typography } from "@mui/material";
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import PersonIcon from '@mui/icons-material/Person';
@@ -12,6 +12,7 @@ import {
   DashboardTransactionTable
 } from "./components";
 import { Spinner } from "@app/_shared";
+import { CartProvider, PopularProducts, CartWidget } from "@app/_components/widgets/Products";
 
 const Dashboard = () => {
   const localUser = JSON.parse(localStorage.getItem("user") || "{}");
@@ -85,6 +86,7 @@ const Dashboard = () => {
           <DashboardTransactionTable transactions={transactions} />
         </Grid>
       </Grid>
+      
     </Box>
   );
 };

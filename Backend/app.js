@@ -1,4 +1,5 @@
-// server.js
+// ================================================================
+// server.js (CORRECTED)
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
@@ -10,11 +11,20 @@ const app = express();
 const userRoutes = require('./routes/userRoutes');
 const depositRoutes = require('./routes/deposit');
 const mlmRoutes = require('./routes/mlm');
+const cartRoutes = require('./routes/cartRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 
+const webhookRoutes = require('./routes/webhookRoutes'); // Fixed: was webhookRoutes, should be webhook
 
 const connectDB = require('./config/db');
 
 app.use(cors());
+
+// IMPORTANT: Webhook route must come BEFORE express.json() middleware
+// because Stripe webhooks need raw body
+app.use('/api', webhookRoutes);
+
+// Now add JSON parsing for other routes
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -30,12 +40,11 @@ app.get('/', (req, res) => {
 });
 
 // Routes
-app.use('/api/users', userRoutes); 
-
+app.use('/api/users', userRoutes);
 app.use('/api', depositRoutes);
-
 app.use('/api/mlm-tree', mlmRoutes);
-
+app.use('/api', cartRoutes);
+app.use('/api', orderRoutes);
 
 
 app.all('*', (req, res) => {
@@ -49,3 +58,4 @@ app.listen(PORT, () => {
   console.log(`Test URL: http://localhost:${PORT}`);
   console.log(`Register URL: http://localhost:${PORT}/api/users/register`);
 });
+

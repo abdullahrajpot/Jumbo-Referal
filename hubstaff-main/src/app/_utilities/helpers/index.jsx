@@ -38,3 +38,16 @@ export const getAssetPath = (url, size) => {
 
   return url;
 };
+
+export const getColor = (status) => {
+  switch (status) {
+    case "due":
+      return "warning";
+    case "paid":
+      return "success";
+    case "invited":
+      return "default";
+    case "active":
+      return "success";
+  }
+};

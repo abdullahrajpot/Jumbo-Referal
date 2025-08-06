@@ -12,6 +12,8 @@ import DashboardPage from "@app/pages/dashboard/dashboard";
 import MLMTreePage from "@app/pages/mlm-tree";
 import GuestRoute from "@app/_hoc/GuestRoute";
 import SettingsPage from "@app/pages/settings/SettingsPage";
+import ProductsPage from "@app/pages/products";
+import OrdersPage from "@app/pages/user/order";
 
 
 const routes = [
@@ -42,6 +44,14 @@ const routes = [
       {
         path: "/settings",
         element: <Page Component={SettingsPage} hoc={withAuth} />,
+      },
+      {
+        path: "products",
+        element: <Page Component={ProductsPage} hoc={withAuth} />,
+      },
+       {
+        path: "orders",
+        element: <Page Component={OrdersPage} hoc={withAuth} />,
       },
     ],
   },
